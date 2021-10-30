@@ -1,0 +1,134 @@
+﻿<!-- 
+    1. По координатам двух точек, которые вводит пользователь, определить уравнение прямой, проходящей через эти точки.
+    Общий вид уравнения: y = kx + b; где k = (y1 - y2) / (x1 - x2), b = y2 - k*x2.
+    
+    2. Обменять значения двух переменных, используя третью (буферную) переменную.
+    
+    3. Объявите две переменные: admin и name. Запишите в name строку "Василий". Замените значение из name в admin. Выведите admin.
+    
+    4. Получить от пользователя данные о пользователе: имя, фамилию, возраст. Обработать их и вывести на экран.
+    
+    5. Запросите у пользователя его возраст, после чего выведите на экран модальное окно с вопросом: "Ваш возраст ...(введеное пользователем число) лет?". Далее в зависимости от выбора пользователя выводится модальное окно с информацией true или false.
+-->
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title></title>
+    <style>
+        .btn {
+            width: 100px;
+            height: 50px;
+            font-size: large;
+            background-color: rgb(2, 1, 213);
+        }
+
+        .btn:hover {
+            background-color: rgb(2, 109, 251);
+        }
+
+        .wrap {
+            width: 50%;
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <h1>
+            <p style="text-align: center;">Homework#1 for JS</p>
+        </h1>
+    </div>
+    <div class="wrap">
+        <Ul>
+            <li>1. По координатам двух точек, которые вводит пользователь, определить уравнение прямой, проходящей через
+                эти точки.
+                Общий вид уравнения: y = kx + b; где k = (y1 - y2) / (x1 - x2), b = y2 - k*x2.</li>
+            <li>2. Обменять значения двух переменных, используя третью (буферную) переменную.</li>
+            <li>3. Объявите две переменные: admin и name. Запишите в name строку "Василий". Замените значение из name в
+                admin. Выведите admin.</li>
+            <li>4. Получить от пользователя данные о пользователе: имя, фамилию, возраст. Обработать их и вывести на
+                экран.</li>
+            <li>5. Запросите у пользователя его возраст, после чего выведите на экран модальное окно с вопросом: "Ваш
+                возраст ...(введеное пользователем число) лет?". Далее в зависимости от выбора пользователя выводится
+                модальное окно с информацией true или false.</li>
+        </Ul>
+    </div>
+    <div class="wrap" style="display:flex; justify-content: space-between; padding-top: 30px;">
+        <button class="btn" onclick="first()">First</button>
+        <button class="btn" onclick="second()">Second</button>
+        <button class="btn" onclick="third()">Third</button>
+        <button class="btn" onclick="fourth()">Fourth</button>
+        <button class="btn" onclick="fifth()">Fifth</button>
+    </div>
+    <h2>
+        <div class="wrap" id="output" style="height: 20vh; text-align: center; border: 1px solid black;">
+            <p style="color: rgba(0, 0, 0, 0.5); font-size: larger;">Result</p>
+        </div>
+    </h2>
+
+    <script type="text/javascript">
+        var output = document.getElementById('output')
+        function first() {
+            var x1 = +prompt("x1")
+            var y1 = +prompt("y1")
+            var x2 = +prompt("x2")
+            var y2 = +prompt("y2")
+            var k = (y1 - y2) / (x1 - x2);
+            var b = y2 - (k * x2);
+            if (x1 == x2) {
+                output.innerHTML = "Wrong numbers!"
+            }
+            else if (k == 0) {
+                var otvet = "y = "
+            }
+            else {
+                var otvet = "y = " + k + "x "
+            }
+            if (b != 0 && x1 != x2) {
+                if (b < 0) {
+                    var otvet = otvet + "- " + Math.abs(b)
+                }
+                else {
+                    var otvet = otvet + "+ " + Math.abs(b)
+                }
+                output.innerHTML = otvet
+            }
+        }
+        function second() {
+            var a = prompt("first var")
+            var b = prompt("second var")
+            var c = a
+            a = b
+            b = c
+            output.innerHTML = "a = " + a + '<br/>' + "b = " + b + '<br/>' + "c = " + c + '<br/>'
+        }
+        function third() {
+            var admin
+            var name
+            name = "Vasiliy"
+            admin = name
+            output.innerHTML = "Name is " + admin
+        }
+        function fourth() {
+            var name = prompt("Your name")
+            var s_name = prompt("Your second name")
+            var old = prompt("How old are u?")
+            output.innerHTML = "Hello " + name + " " + s_name + '<br/>' + "You are " + old + " years old!"
+        }
+        function fifth() {
+            var age = +prompt("How old are u?")
+            var q = confirm("Your age is " + age + "?")
+            if (q == true) {
+                output.innerHTML = "True"
+            }
+            else {
+                output.innerHTML = "False"
+            }
+        }
+    </script>
+</body>
+
+</html>
